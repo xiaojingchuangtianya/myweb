@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>--注册界面--</title>
+</head>
+<body>
+{#django的防伪认证#}
+{% csrf_token %}
+{% for reg in form %}
+    <label for="{{ reg.id_for_label }}">{{ reg.label }}:</label>
+    {{ reg }}
+    <p style="color: red">{{reg.errors.as_text}}</p>
+{% endfor %}
+</body>
+</html>
