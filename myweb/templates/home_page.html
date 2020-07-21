@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-heighth,initial-scale=1.0">
+    <script type="text/javascript" src="/static/vue.js"></script>
+</head>
+<style>
+    body{
+        background: #d7dff0;
+    }
+    h4{
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+<body>
+
+<div class="blog">
+{# 展示单页博客内容,后续还需要设置分页加载功能 #}
+    <div class="show_blogs">
+            {% for i in blogs %}
+            <h4><a href="/blog/show_blog/title={{ i.title }}">{{ i.title }}</a></h4>
+            <p>{{ i.text | safe |truncatechars:180 }}</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+{#<script>#}
+{#    var myapp=new Vue({#}
+{#        el:".blog",#}
+{#        delimiters:['{[', ']}'],#}
+{#        data:{#}
+{#        },#}
+{#        methods:{#}
+{#           to_detail:function (title) {#}
+{#               console.log(toString(title))#}
+{#           }#}
+{#        },#}
+{#    })#}
+{#</script>#}
+</html>

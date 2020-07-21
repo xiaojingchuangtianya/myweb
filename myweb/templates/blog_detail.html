@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/static/vue.js">
+</head>
+<body>
+{% if not detail %}
+    <h2>博客不存在</h2>
+{% else %}
+   {{ detail }}
+{% endif %}
+
+</body>
+</html>
