@@ -52,8 +52,8 @@
 {#这里作为主要显示区,用于显示操作界面#}
 <div class="show">
 {#如果长度为0,即空数组时展示首页,点击那个页面后执行那个页面#}
-    <iframe v-if="last_watch.length" :src=`/blog/show_blog/name=${watching}` frameborder="0" width="100%" height="100%" ></iframe>
-    <iframe v-else src="/blog/show_blog/name=主页" frameborder="0" width="100%" height="100%" >
+    <iframe v-if="last_watch.length" :src=`/blog/show_blog/${watching}` frameborder="0" width="100%" height="100%" ></iframe>
+    <iframe v-else src="/blog/show_blog/主页" frameborder="0" width="100%" height="100%" >
     </iframe>
 </div>
 {#脚注内容#}
@@ -61,7 +61,6 @@
 
 </div>
 </div>
-
 <script type="text/javascript">
     var myapp=new Vue({
         delimiters:['{[', ']}'],
