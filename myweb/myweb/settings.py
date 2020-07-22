@@ -130,8 +130,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+# 静态文件位置·
 STATIC_URL = '/static/'
-
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR,"static")
 ]
+
+#media路径配置
+MEDIA_URL="/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR,"media")
+
+#ckeditor配置，这里为media目录下的
+CKEDITOR_UPLOAD_PATH="upload/"

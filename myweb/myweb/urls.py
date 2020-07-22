@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf import settings
+from django.conf.urls.static import static
 import Login.views as login_views
 from Notes import urls as note_url
 from . import views as index
@@ -28,8 +30,9 @@ from show_blog import urls as show_blog
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("",index.index),
-    path("login",login_views.login),
+    path("login",login_views.my_login),
     path("register",login_views.register),
     path("note/",include(note_url)),
     path("blog/show_blog/",include(show_blog))
 ]
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

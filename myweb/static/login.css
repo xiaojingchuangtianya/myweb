@@ -19,6 +19,9 @@ div.login_body{
 /*小于,等于800px的屏幕*/
 
 @media  screen and (max-width:800px){
+    a.not_login:hover{
+        text-blink:true;
+    }
     div.login_form{
         font-size: 1.05em;
         margin: 0 auto;

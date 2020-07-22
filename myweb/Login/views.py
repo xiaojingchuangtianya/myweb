@@ -1,8 +1,8 @@
 from django.shortcuts import render,redirect
 from .forms import RegForm,LoginForm
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate,login
 # Create your views here.
-def login(request):
+def my_login(request):
     form=LoginForm()
     if request.method=="POST":
         # 获取账号密码
@@ -10,9 +10,11 @@ def login(request):
         password=request.POST["password"]
         #将来再设置验证码功能
         user=authenticate(username=username,password=password)
+        print(user)
         # 如果登录为真实有效,返回主页
         if user is not None:
-            return redirect("/.")
+            login(request,user)
+            return redirect("/")
         else:
             return render(request,"login.html",context={"form":form,"error":"yes"})
     return render(request,"login.html",context={"form":form})

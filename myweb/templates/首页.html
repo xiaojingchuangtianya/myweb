@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="/static/vue.js"></script>
+    <link rel="stylesheet" href="/static/home_blog.css">
+</head>
+<body>
+<div id="app">
+{#用三张图片放在这里做展示图，图片3秒更换一次，要有动画效果#}
+    <div class="show0" v-show="show[0]"></div>
+    <div class="show1" v-show="show[1]"></div>
+    <div class="show2" v-show="show[2]"></div>
+</div>
+
+<script type="text/javascript">
+    var myvue=new Vue({
+        el:"#app",
+        data:{
+            i:0,
+            show:[true,false,true]
+        },
+        methods:{
+            change_picture:function () {
+                var show_what=this.i%3;
+                this.i++;
+                for (j = 0; j < 3; j++) {
+                    if (show_what==j){this.show[j]=true}
+                    else{this.show[j]=false}
+                }
+                console.log(this.show)
+            }
+        },
+        {#在渲染时定义这个计时器#}
+        mounted(){
+            this.timer=setInterval(this.change_picture,3000);
+        }
+    })
+</script>
+</body>
+</html>

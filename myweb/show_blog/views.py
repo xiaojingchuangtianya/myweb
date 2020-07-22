@@ -1,7 +1,19 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 from content.models import Blog
 # Create your views here.
+
+
 # 展示首页,name为接受url的参数
-def show_home(request,name):
-    class_blog=Blog.objects.filter(classification=name)
+def show_class(request,class_name):
+    if class_name=="首页":
+        print("这是首页！")
+        return render(request,"首页.html")
+    if class_name=="Header":
+        return HttpResponse("头像处理")
+    class_blog=Blog.objects.filter(classification=class_name)
     return render(request,"home_page.html",context={"blogs":class_blog})
+
+def show_blog_detail(request,title):
+    print(title)
+    blog_detail=Blog.objects.filter(title=title)
+    return HttpResponse(blog_detail[0].text)

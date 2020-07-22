@@ -5,7 +5,7 @@
     <title>登录界面</title>
     <meta name="viewport" content="height=device-heighth,initial-scale=1.0">
 {#   屏幕宽度大于600px时则加载这个css #}
-    <link rel="stylesheet"  href="../static/login.css">
+    <link rel="stylesheet"  href="/static/login.css">
     {% if error == "yes" %}
     <script type="text/javascript">
         alert("密码或账号错误")
@@ -27,7 +27,7 @@
                         <br>
                             <a href="/register">注册</a></button>
                             <a href="/">找回密码</a>
-                            <span><a href="/">暂不登录,直接进入</a></span>
+                            <span><a href="javascript:void(0)" class="not_login" title="嘿嘿，骗你的，一定要登录！">暂不登录,直接进入</a></span>
                     </form>
                 </div>
 

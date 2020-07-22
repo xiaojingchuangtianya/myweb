@@ -19,34 +19,30 @@
 {# 展示单页博客内容,后续还需要设置分页加载功能 #}
     <div class="show_blogs" v-show="show_all">
             {% for i in blogs %}
-            <h4><a href="javascript:void(0)" @click="to_detail('1')">{{ i.title }}</a></h4>
+            <h4><a href="/blog/show_blog/title={{ i.title }}">{{ i.title }}</a></h4>
             <p>{{ i.text | safe |truncatechars:180 }}</p>
         {% endfor %}
-    </div>
-{#展示单条博客#}
-    <div class="one_blog" v-show="show_detail">
-
     </div>
 
 </div>
 
-<script>
-    var myapp=new Vue({
-        el:".blog",
-        delimiters:['{[', ']}'],
-        data:{
-            show_detail:false,
-            show_all:true
-        },
-        methods:{
-           to_detail:function (title) {
-               console.log(this);
-                this.show_all=!this.show_all;
-               this.show_detail=!this.show_detail;
-           }
-        },
-    })
-</script>
+{#<script>#}
+{#    var myapp=new Vue({#}
+{#        el:".blog",#}
+{#        delimiters:['{[', ']}'],#}
+{#        data:{#}
+{#            show_detail:false,#}
+{#            show_all:true#}
+{#        },#}
+{#        methods:{#}
+{#           to_detail:function (title) {#}
+{#               console.log(this);#}
+{#                this.show_all=!this.show_all;#}
+{#               this.show_detail=!this.show_detail;#}
+{#           }#}
+{#        },#}
+{#    })#}
+{#</script>#}
 
 </body>
 </html>
