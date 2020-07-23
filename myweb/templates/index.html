@@ -15,7 +15,13 @@
 <div class="app">
 <div class="inner1" v-show="is_show_1" >
     <ul>
-        <li @click="add_watch('Header')"><a href="javascript:void(0)"> 大头像</a></li>
+        <li @click="add_watch('个人信息')">
+            {% if user.is_authenticated %}{# 如果登录了，显示头像 #}
+            <a href="javascript:void(0)"> <img style="height: auto; width: 16vw;border-radius: 16vw " src="media/{{ pro_mes.head_icon }}" alt="头像尚未加载"></a>
+            {% else %}{# 没有登录显示一个登录链接 #}
+                <a href="/login">登录</a>
+            {% endif %}
+        </li>
         <li @click="add_watch('首页')"><a href="javascript:void(0)">首页</a></li>
         <li @click="add_watch('爬虫')"><a href="javascript:void(0)">爬虫</a></li>
         <li @click="add_watch('算法')"><a href="javascript:void(0)">算法</a></li>
@@ -45,8 +51,17 @@
 <div class="turn_out"  @click="turn_out" v-show="is_show_2"><img class="turn_out" src="/static/img/右移.png" alt=""></div>
 <div class="turn_in"  @click="turn_in" v-show="is_show_1"><img class="turn_in" src="/static/img/左移.png" alt=""></div>
 <div class="navbar">
-{# 这里为一个导航栏,固定在顶部,如果点击了事项,则会在此开启一个页面#}
-        <li v-for="item,key in last_watch"><a href="javascript:void(0)" @click="change_watch(item)">{[item]}</a></li>
+    {# 这里为一个导航栏,固定在顶部,如果点击了事项,则会在此开启一个页面#}
+    <li v-for="item,key in last_watch" class="left_nav"><a href="javascript:void(0)" @click="change_watch(item)">{[item]}</a></li>
+
+    {#这个用来写最右侧的登录按钮#}
+    <div class="right_nav">
+        {% if user.is_authenticated %}
+            <li ><a href="/logout">退出</a></li>
+        {% else %}
+            <a href="/login">登录</a>
+        {% endif %}
+    </div>
 </div>
 
 {#这里作为主要显示区,用于显示操作界面#}

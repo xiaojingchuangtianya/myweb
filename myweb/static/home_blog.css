@@ -2,12 +2,29 @@
     margin: 0;
     padding: 0;
 }
-html,body{
-       width: 100%;
-    height: 100%;
+
+.show_picture{
+    height: 100vh;
+    width: 100vw;
 }
-div.show0{
-    width: 100%;
-    height: 100%;
-    background: url("/static/img/login_img.jpg");
+
+div.show_picture0{
+    background: url("/static/img/show_1.jpg") ;
 }
+div.show_picture1{
+    background: url("/static/img/show_2.png");
+}
+
+div.show_picture2{
+    background: url("/static/img/show_3.jpg");
+}
+
+
+
+
+
+
+
+
+
+

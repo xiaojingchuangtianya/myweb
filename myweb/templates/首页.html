@@ -9,9 +9,17 @@
 <body>
 <div id="app">
 {#用三张图片放在这里做展示图，图片3秒更换一次，要有动画效果#}
-    <div class="show0" v-show="show[0]"></div>
-    <div class="show1" v-show="show[1]"></div>
-    <div class="show2" v-show="show[2]"></div>
+    <div class=" show_picture show_picture0" v-show="show[0]">
+       <p>按热度排行的十篇文章</p>
+    </div>
+
+    <div class="show_picture show_picture1" v-show="show[1]">
+        <p>近三天比较多观看的五篇文章</p>
+    </div>
+
+    <div class="show_picture show_picture2" v-show="show[2]">
+        <p>按时间排行观看的文章</p>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -19,22 +27,23 @@
         el:"#app",
         data:{
             i:0,
-            show:[true,false,true]
+            show:[true,false,false]
         },
         methods:{
             change_picture:function () {
                 var show_what=this.i%3;
                 this.i++;
                 for (j = 0; j < 3; j++) {
-                    if (show_what==j){this.show[j]=true}
+                    if(show_what==j){
+                        this.show.splice(show_what,1,true)}
                     else{this.show[j]=false}
                 }
-                console.log(this.show)
+                this.show
             }
         },
         {#在渲染时定义这个计时器#}
-        mounted(){
-            this.timer=setInterval(this.change_picture,3000);
+        created(){
+            setInterval(this.change_picture,5000);
         }
     })
 </script>

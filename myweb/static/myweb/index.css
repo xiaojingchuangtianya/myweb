@@ -14,7 +14,9 @@ html{
 body {
     display: flex;
     flex-direction: column;
-
+}
+a{
+    text-decoration: none;
 }
 
 /*屏幕小于800px的使用该样式,所有详情信息展示,如果小于则只展示图标*/
@@ -47,8 +49,14 @@ div.navbar{
     top: 0;
     right: 0;
     }
-div.navbar li{
+/*导航条左侧为一个li,有边距为2em*/
+div.navbar li.left_nav{
     margin-right: 2em;
+}
+/*再导航条右侧，设置登录，注册等选项卡*/
+div.navbar div.right_nav{
+    position: absolute;
+    right:0;
 }
 div.show{
         width: 80vw;
